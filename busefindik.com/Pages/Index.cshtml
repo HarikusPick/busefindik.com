@@ -1,0 +1,149 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Anasayfa";
+    ViewData["NoHeader"] = true;
+    ViewData["SoscialBar"] = "olsun";
+}
+
+
+
+
+
+<section class="welcome-area">
+    <div class="carousel h-100 slide" data-ride="carousel" id="welcomeSlider">
+        <div class="carousel-inner h-100">
+            @{var f = 0; var ff = 1;}
+            @foreach (var item in Model.listimages)
+             {
+                if (item.Slider.Equals("true"))
+                {
+                    if (f == 0)
+                    {
+                        <div class="carousel-item h-100 bg-img active" style="background-image: url(images/@item.ImageFileName);">
+                            <div class="carousel-content h-100">
+                                <div class="slide-text">
+                                    <span>@ff</span>
+                                    <h2> @item.Title</h2>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item h-100 bg-img" style="background-image: url(images/@item.ImageFileName);">
+                            <div class="carousel-content h-100">
+                                <div class="slide-text">
+                                    <span>@ff</span>
+                                    <h2> @item.Title</h2>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    f++;
+                    ff++;
+                }
+            }
+        </div>
+        <!-- Carousel Indicators -->
+        <ol class="carousel-indicators">
+            @{var i = 0;}
+            @foreach (var item in Model.listimages)
+            {
+                if (item.Slider.Equals("true"))
+                {
+                    if ( i == 0)
+                    {
+                        <li data-target="#welcomeSlider" data-slide-to="@i" class="active bg-img" style="background-image: url(images/@item.ImageFileName);"></li>
+                    }
+                    else
+                    {
+                        <li data-target="#welcomeSlider" data-slide-to="@i" class="bg-img" style="background-image: url(images/@item.ImageFileName);"></li>
+                    }
+                    i++;
+                }
+            }
+        </ol>
+    </div>
+</section>
+<!-- ***** Welcome Area End ***** -->
+<!-- ***** Contact Area Start ***** -->
+
+
+<div class="contact-popup-form" id="contact-modal-lg">
+    <div class="modal fade contact-modal-lg" tabindex="-1" role="dialog" aria-labelledby="contact-modal-lg" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="contact-heading-text text-center mb-30">
+                                <span></span>
+                                <h2>İletişime Geçelim</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact Form Area -->
+                <div class="contact-form-area">
+                    <div class="container-fluid">
+
+                        @if (Model.ErrorMessage.Length > 0)
+                        {
+                            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                                <strong>@Model.ErrorMessage</strong>
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>
+                        }
+                        else if (Model.SuccessMessage.Length > 0)
+                        {
+                            <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                <strong>@Model.SuccessMessage</strong>
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>
+                        }
+
+                        <form method="post">
+
+                            <div class="row">
+                                <div class="col-sm">
+                                        <input id="name" class="form-control" placeholder="Tam isminiz" asp-for="FullName">
+                                        <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                                <div class="col-sm">
+                                    <input placeholder="Eposta adresiniz" id="email" class="form-control" asp-for="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm">
+                                        <input class="form-control" id="name" placeholder="Telefon numaranız" asp-for="Phone">
+                                        <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                                <div class="col-sm">
+                                        <input id="subject" placeholder="Başlık" class="form-control" asp-for="Subject">
+                                        <span asp-validation-for="Subject" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <textarea placeholder="Mesajınız" class="form-control" asp-for="Message"></textarea>
+                                        <span asp-validation-for="Message" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn studio-btn mt-3"><img src="img/core-img/logo-icon.png" alt=""> Gönder</button>
+                                </div>
+                            
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Contact Area End ***** -->

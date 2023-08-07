@@ -1,0 +1,135 @@
+﻿@page
+@model busefindik.com.Pages.AboutModel
+@{
+    ViewData["AltBar"] = true;
+    ViewData["SoscialBar"] = true;
+}
+
+
+
+<section class="about-me-area mt-100 section_padding_100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="about-me-thumb">
+                    <img src="/img/img_20220603_132051.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-10">
+                <div class="about-content mt-100 mb-100 text-center">
+                    <span></span>
+                    <h2>Hakkımda</h2>
+                    @foreach(var item in Model.listyazi)
+                    {
+                        <p>@item.Description</p>
+                    }
+                    
+                </div>
+            </div>
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="single-service-area section_padding_0_100 text-center wow fadeInUp" data-wow-delay="0.1s">
+                            <img src="img/core-img/heart.png" alt="">
+                            <h5>Wedding Photography</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lectus eu felis semper finibus ac eget ipsum. Lorem ipsum.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="single-service-area section_padding_0_100 text-center wow fadeInUp" data-wow-delay="0.4s">
+                            <img src="img/core-img/photo-camera.png" alt="">
+                            <h5>Studio Photography</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lectus eu felis semper finibus ac eget ipsum. Lorem ipsum.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="single-service-area section_padding_0_100 text-center wow fadeInUp" data-wow-delay="0.9s">
+                            <img src="img/core-img/video-camera.png" alt="">
+                            <h5>Portraits Photography</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel lectus eu felis semper finibus ac eget ipsum. Lorem ipsum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+                <!-- Pie Bars Area Start -->
+                <div class="our-skills-area text-center">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="single-pie-bar" data-percent="75">
+                                <canvas class="bar-circle" width="100" height="100"></canvas>
+                                <h6>Photoshop</h6>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="single-pie-bar" data-percent="83">
+                                <canvas class="bar-circle" width="100" height="100"></canvas>
+                                <h6>Illustrator</h6>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="single-pie-bar" data-percent="25">
+                                <canvas class="bar-circle" width="100" height="100"></canvas>
+                                <h6>Lightroom</h6>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="single-pie-bar" data-percent="95">
+                                <canvas class="bar-circle" width="100" height="100"></canvas>
+                                <h6>After Effects</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="single-pie-bar" data-percent="75">
+                                <canvas class="bar-circle" width="100" height="100"></canvas>
+                                <h6>Ürün Çekimi</h6>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="single-pie-bar" data-percent="83">
+                                <canvas class="bar-circle" width="100" height="100"></canvas>
+                                <h6>Portre Çekimi</h6>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="single-pie-bar" data-percent="25">
+                                <canvas class="bar-circle" width="100" height="100"></canvas>
+                                <h6>Studio Çekimi</h6>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="single-pie-bar" data-percent="95">
+                                <canvas class="bar-circle" width="100" height="100"></canvas>
+                                <h6>Düğün Çekimi</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="follow-me-instagram-area clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-11 ml-auto">
+                <div class="follow-me-title">
+                    <h5>Follow me  Instagram (ig adresin)</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Instagram Feeds Area -->
+    <div class="instagram-feeds-area owl-carousel">
+        @foreach (var item in Model.listcontactImages)
+        {
+            <div class="single-instagram-feeds">
+                <img src="images/@item.ImageFileName" alt="">
+                <a href="@item.InstagramLink"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </div>
+        }
+    </div>
+</section>

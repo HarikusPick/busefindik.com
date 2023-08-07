@@ -1,0 +1,134 @@
+﻿@page
+@model busefindik.com.Pages.ContactModel
+@{
+    ViewData["ContactPage"] = true;
+    ViewData["AltBar"] = true;
+    ViewData["SoscialBar"] = true;
+}
+   <section class="contact-area section_padding_100 mt-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="contact-heading-text text-center mb-100">
+                        <span></span>
+                        <h2>İletişime Geçelim</h2>
+                    <p>Merhaba. Aşağıdaki formu doldurup benimle iletişime geçebilirsiniz. En kısa süre içerisinde sizlere dönüş sağlayacağım. Teşekkür eder, sağlıklı günler dilerim.<i class="fa fa-heart-o" aria-hidden="true"></i></p>
+                    </div>
+                </div>
+                <!-- Contact Form Area -->
+                <div class="col-10">
+                    <div class="contact-form-area">
+                    @if (Model.ErrorMessage.Length > 0)
+                    {
+                        <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                            <strong>@Model.ErrorMessage</strong>
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
+                    }
+                    else if (Model.SuccessMessage.Length > 0)
+                    {
+                        <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                            <strong>@Model.SuccessMessage</strong>
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
+                    }
+
+                        <form method="post">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <div class="col-sm-8">
+                                    <input id="name" class="form-control" placeholder="Tam isminiz" asp-for="FullName">
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="col-sm-8">
+                                    <input placeholder="Eposta adresiniz" id="email" class="form-control" asp-for="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="col-sm-8">
+                                    <input class="form-control" id="name" placeholder="Telefon numaranız" asp-for="Phone">
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="col-sm-8">
+                                    <input id ="subject" placeholder="Başlık" class="form-control" asp-for="Subject">
+                                    <span asp-validation-for="Subject" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-10">
+                                        <textarea placeholder="Mesajınız" class="form-control" asp-for="Message"></textarea>
+                                        <span asp-validation-for="Message" class="text-danger"></span>
+                            </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn studio-btn mt-3"><img src="img/core-img/logo-icon.png" alt=""> Gönder</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps -->
+    <div class="map-area">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-10">
+                    <div id="googleMap"></div>
+                    <!-- Contact Info -->
+                    <div class="contact-core-info d-flex align-items-center wow fadeInLeftBig" data-wow-delay="1s" data-wow-duration="1000ms">
+                        <div class="contactInfo">
+                            <img src="img/core-img/logo.png" alt="">
+                            <!-- Single Footer Content -->
+                            <div class="single-footer-content">
+                                <img src="img/core-img/map.png" alt="">
+                                <a href="#">Blvd Libertad, 34 m05200 Arévalo</a>
+                            </div>
+                            <!-- Single Footer Content -->
+                            <div class="single-footer-content">
+                                <img src="img/core-img/smartphone.png" alt="">
+                                <a href="#">0034 37483 2445 322</a>
+                            </div>
+                            <!-- Single Footer Content -->
+                            <div class="single-footer-content">
+                                <img src="img/core-img/envelope-2.png" alt="">
+                                <a href="#">hello@company.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Follow Me Instagram Area Start -->
+    <section class="follow-me-instagram-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-11 ml-auto">
+                    <div class="follow-me-title">
+                        <h5>Follow me  Instagram</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Instagram Feeds Area -->
+        <div class="instagram-feeds-area owl-carousel">
+
+        @foreach (var item in Model.listcontactImages)
+        {
+            <div class="single-instagram-feeds">
+                <img src="images/@item.ImageFileName" alt="">
+                <a href="@item.InstagramLink"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </div>
+        }
+        </div>
+    </section>
+    <!-- Follow Me Instagram Area End -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
+<script src="js/map-active.js"></script>

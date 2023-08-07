@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>@ViewData["Title"] - Buse Fındık</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="~/img/core-img/favicon.ico">
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="~/css/core-style.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <!-- Responsive CSS -->
+    <link href="~/css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="showbox">
+            <div class="loader">
+                <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!-- Gradient Background Overlay -->
+    <div class="gradient-background-overlay"></div>
+    @if (ViewData["NoHeader"] == null)
+    {
+        <!-- Header Area Start -->
+        <header class="header-area bg-img" style="background-image: url(/img/bg-img/14.jpg);">
+            <div class="container-fluid h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 h-100">
+                        <div class="main-menu h-100">
+                            <nav class="navbar h-100 navbar-expand-lg">
+                                <!-- Logo Area  -->
+                                <a class="navbar-brand" href="/Index"><img src="~/img/core-img/logo.png" alt="Logo"></a>
+
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#studioMenu" aria-controls="studioMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i> Menu</button>
+
+                                <div class="collapse navbar-collapse" id="studioMenu">
+                                    <!-- Menu Area Start  -->
+
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="/Index">Anasayfa <span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Contact">İletişim</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/About">Hakkımda</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Portfolio">Fotoğraf Galerisi</a>
+                                        </li>
+                                    @if (Context.Session.GetString("role") == null)
+                                    {
+                                        @*<li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Auth/Register">Kayıt</a></li>*@
+                                        <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Auth/Login">Giriş</a></li>
+                                    }
+                                    else if (Context.Session.GetString("role").Equals("admin"))
+                                    {
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="/Admin/Index">Admin</a>
+                                                <a class="dropdown-item" href="/Admin/Contact/Index">Mesajlar</a>
+                                                <a class="dropdown-item" href="/Admin/Images/Index">Fotoğraflar</a>
+                                                <a class="dropdown-item" href="/Admin/Portfolio/Index">Portfolyo Yazısı</a>
+                                            </div>
+                                        </li>
+                                    }
+                                    else if (Context.Session.GetString("role").Equals("client"))
+                                    {
+                                       
+                                    }
+                                        @{/*<li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="/Admin/Index">Admin</a>
+                                                <a class="dropdown-item" href="/Admin/Contact/Index">Mesajlar</a>
+                                                <a class="dropdown-item" href="/Admin/Images/Index">Fotoğraflar</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Contact">İletişim</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Portfolio">Fotoğraf Galerisi</a>
+                                        </li>*/}
+
+
+
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    }
+    else
+    {
+        <!-- Header Area Start -->
+        <header class="header-area">
+            <div class="container-fluid h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 h-100">
+                        <div class="main-menu h-100">
+                            <nav class="navbar h-100 navbar-expand-lg">
+                                <!-- Logo Area  -->
+                                <a class="navbar-brand" href="/Index"><img src="~/img/core-img/logo.png" alt="Logo"></a>
+
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#studioMenu" aria-controls="studioMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i> Menu</button>
+
+                                <div class="collapse navbar-collapse" id="studioMenu">
+                                    <!-- Menu Area Start  -->
+
+
+
+
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="/Index">Anasayfa <span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Contact">İletişim</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/About">Hakkımda</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Portfolio">Fotoğraf Galerisi</a>
+                                        </li>
+                                        @if (Context.Session.GetString("role") == null)
+                                        {
+@*                                            <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Auth/Register">Kayıt</a> </li>
+*@                                            <li class="nav-item"><a class="nav-link" asp-area="" asp-page="/Auth/Login">Giriş</a></li>
+
+                                        }
+                                        else if (Context.Session.GetString("role").Equals("admin"))
+                                        {
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item" href="/Admin/Index">Admin</a>
+                                                    <a class="dropdown-item" href="/Admin/Contact/Index">Mesajlar</a>
+                                                    <a class="dropdown-item" href="/Admin/Images/Index">Fotoğraflar</a>
+                                                    <a class="dropdown-item" href="/Admin/Portfolio/Index">Portfolyo Yazısı</a>
+                                                </div>
+                                            </li>
+                                        }
+                                        else if (Context.Session.GetString("role").Equals("client"))
+                                        {
+
+                                        }
+                                        @{
+                                        /*<li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/Admin/Index">Admin</a>
+                                        <a class="dropdown-item" href="/Admin/Contact/Index">Mesajlar</a>
+                                        <a class="dropdown-item" href="/Admin/Images/Index">Fotoğraflar</a>
+                                        </div>
+                                        </li>
+                                        <li class="nav-item">
+                                        <a class="nav-link" href="/Contact">İletişim</a>
+                                        </li>
+                                        <li class="nav-item">
+                                        <a class="nav-link" href="/Portfolio">Fotoğraf Galerisi</a>
+                                            </li>*/
+                                        }
+
+
+
+                                    </ul>
+
+
+
+
+@*
+
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="/Index">Anasayfa <span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="/Admin/Index">Admin</a>
+                                                <a class="dropdown-item" href="/Admin/Contact/Index">Mesajlar</a>
+                                                <a class="dropdown-item" href="/Admin/Images/Index">Fotoğraflar</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Contact">İletişm</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/Portfolio">Fotoğraf Galerisi</a>
+                                        </li>
+                                    </ul>
+*@
+
+
+
+
+
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header Area End -->
+    }
+    <!-- Header Area End -->
+    <!-- Social Sidebar Area Start -->
+
+    @if (ViewData["SoscialBar"] != null)
+    {
+        <div class="social-sidebar-area bg-white">
+        <!-- Social Area -->
+        <div class="social-info-area">
+            <a href="#" data-toggle="tooltip" data-placement="right" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i> <span>Facebook</span></a>
+            <a href="#" data-toggle="tooltip" data-placement="right" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i> <span>Instagram</span></a>
+            <a href="#" data-toggle="tooltip" data-placement="right" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i> <span>Behance</span></a>
+        </div>
+        <!-- Message Box -->
+        <div class="message-box">
+            <a href="#" data-toggle="modal" data-target=".contact-modal-lg"><img src="~/img/core-img/envelope.png" alt=""></a>
+        </div>
+    </div>
+    }
+    
+    <!-- Social Sidebar Area End -->
+
+    <!-- ***** Welcome Area Start ***** -->
+    @if (ViewData["ContactPage"] != null)
+    {
+        @RenderBody()
+    }
+    @if (ViewData["NoHeader"] == null)
+    {
+        <section class="contact-area section_padding_100 mt-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    @RenderBody()
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        @RenderBody()
+    }
+
+    @if (ViewData["AltBar"] != null)
+    {
+
+        <!-- Footer Area Start -->
+        <footer class="footer-area">
+            <div class="container-fluid h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100">
+                        <div class="footer-content h-100 d-md-flex align-items-center justify-content-between">
+                            <!-- Single Footer Content -->
+                            <div class="single-footer-content">
+                                <img src="img/core-img/map.png" alt="">
+                                <a href="#">Blvd Libertad, 34 m05200 Arévalo</a>
+                            </div>
+                            <!-- Single Footer Content -->
+                            <div class="single-footer-content">
+                                <img src="img/core-img/smartphone.png" alt="">
+                                <a href="#">0034 37483 2445 322</a>
+                            </div>
+                            <!-- Single Footer Content -->
+                            <div class="single-footer-content">
+                                <img src="img/core-img/envelope-2.png" alt="">
+                                <a href="#">hello@company.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Area End -->
+    }
+
+
+    @if (ViewData["NoCopyright"] == null)
+    {
+    <p>Copyright &copy;
+    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made by <i class="fa fa-heart-o" aria-hidden="true"></i> Yunus Furkan Özer</p>
+    }
+    
+    <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="~/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="~/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- Plugins js -->
+    <script src="~/js/plugins.js"></script>
+    <!-- Active js -->
+    <script src="~/js/active.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

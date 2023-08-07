@@ -1,0 +1,37 @@
+﻿@page
+@model busefindik.com.Pages.Admin.Portfolio.IndexModel
+@{
+    ViewData["NoCopyright"] = true;
+}
+<div class="row">
+    <h2 class="col">Portfolio Yazısı</h2>
+</div>
+<div class="row">
+    <div class="col">
+        <a class='btn btn-primary' href='/Admin/Portfolio/Create'>Yeni Yazı</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Yazı</th>
+            <th>Oluşturulma Tarihi</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listyazi)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Description</td>
+                <td>@item.CreatedAt</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" href="/Admin/Portfolio/Edit?id=@item.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Admin/Portfolio/Delete?id=@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

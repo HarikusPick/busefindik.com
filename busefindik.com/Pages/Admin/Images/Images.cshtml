@@ -1,0 +1,75 @@
+﻿@page
+@model ImagesModel
+@{
+}
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+else if (Model.successMessage.Length > 0)
+{
+    <div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>@Model.successMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+
+<form method="post" enctype="multipart/form-data">
+    <h2 class="my-3">Yeni Fotoğraf  </h2>
+
+    <div class="row">
+        <label class="col">Başlık</label>
+            <input class="form-control" asp-for="Title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label class="col">Kategori</label>
+            <input class="form-control" asp-for="Category" placeholder="kelimelerin arasın - koy. Örnek: doğa-çekimi"/>
+            <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <div class="row ">
+        <label class="col">Açıklama</label>
+            <textarea class="form-control" asp-for="Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label class="col">Insgtagram Linki</label>
+        <input placeholder="instagram linkini yapıştırın (zorunlu değil)" class="form-control" asp-for="InstagramLink" />
+        <span asp-validation-for="InstagramLink" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <label class="col">Fotoğraf</label>
+            <input class="form-control" asp-for="ImageFile" />
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+
+    <div class="row-cols-auto">
+            <p>Fotoğraf Anasayfada Görüntülenecek mi?</p><br />
+    <div class="col">
+            <input type="radio" value="true" asp-for="Slider">
+            <label>Evet</label>
+    </div>
+    <div class="col">
+            <input type="radio" checked  id="age2" value="false" asp-for="Slider">
+            <label>Hayır</label>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Yükle</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/Admin/Index" role="button">İptal</a>
+        </div>
+    </div>
+
+</form>

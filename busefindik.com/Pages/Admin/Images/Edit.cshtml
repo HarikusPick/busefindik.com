@@ -1,0 +1,115 @@
+﻿@page
+@model busefindik.com.Pages.Admin.Images.EditModel
+@{
+}
+
+<h2 class="my-3">Edit Images</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+else if (Model.successMessage.Length > 0)
+{
+    <div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>@Model.successMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+
+<form method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <label class="col">Id</label>
+        <div class="col">
+            <input readonly type="text" class="form-control-plaintext" asp-for="Id">
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="col-sm-3">Title</label>
+        <div class="col-sm-9">
+            <input class="form-control" asp-for="Title">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <label class="col-sm-3">Category</label>
+        <div class="col-sm-9">
+            <input class="form-control" asp-for="Category">
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="col-sm-3">Description</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" asp-for="Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <label class="col">Insgtagram Linki</label>
+        <input placeholder="instagram linkini yapıştırın (zorunlu değil)" class="form-control" asp-for="InstagramLink" />
+        <span asp-validation-for="InstagramLink" class="text-danger"></span>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Image</label>
+        <div class="col-sm-6">
+            <img src="/images/@Model.ImageFileName" width="100">
+            <input type="hidden" asp-for="ImageFileName" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">New Image</label>
+        <div class="col-sm-9">
+            <input class="form-control" asp-for="ImageFile">
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+    </div>
+    
+
+    
+    
+    <div class="row-cols-auto">
+        <p>Fotoğraf Anasayfada Görüntülenecek mi?</p><br />
+        <div class="col">
+            @if (Model.Slider == "true")
+            {
+                <input checked type="radio" value="true" asp-for="Slider">
+            }
+            else
+            {
+                <input  type="radio" value="true" asp-for="Slider">
+            }
+            <label>Evet</label>
+        </div>
+        <div class="col">
+            @if (Model.Slider == "false")
+            {
+                <input checked type="radio" id="age2" value="false" asp-for="Slider">
+            }
+            else
+            {
+                <input  type="radio" id="age2" value="false" asp-for="Slider">
+            }
+            <label>Hayır</label>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/Admin/Images/Index" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

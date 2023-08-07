@@ -1,0 +1,50 @@
+﻿@page
+@model busefindik.com.Pages.Admin.Images.IndexModel
+@{
+}
+
+<div class="row">
+<h2 class="col">List of Books</h2>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <a class='btn btn-primary' href='/Admin/Images/Images'>Yeni Fotoğraf</a>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Başlık</th>
+            <th>Kategori</th>
+            <th>Açıklama</th>
+            <th>Fotoğraf</th>
+            <th>Oluşturulma Tarihi</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listimages)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td>@item.Category</td>
+                <td>@item.Description</td>
+                <td><img src="/images/@item.ImageFileName" width="100"></td>
+                <td>@item.CreatedAt</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" href="/Admin/Images/Edit?id=@item.Id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Admin/Images/Delete?id=@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
